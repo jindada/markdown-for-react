@@ -59,7 +59,6 @@
     "github-markdown-css": "^2.6.0",
     "highlight.js": "^9.11.0",
     "markdown-it": "^8.3.1",
-    "react-html-parser": "^1.0.3",
-    "react-remarkable": "^1.1.1"
+    "react-html-parser": "^1.0.3"
   }
 }

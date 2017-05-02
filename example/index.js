@@ -3,17 +3,30 @@ import { render } from 'react-dom';
 import MarkdownForReact from '../src/markdown-for-react';
 import './style.less'
 
-const Example = () => {
-
-  const value = `
-
-# \`markdown-for-react\`
+const value = `
+## \`markdown-for-react\`
 - __[markdown-it](https://nodeca.github.io/pica/demo/)__ - high quality and fast image resize in browser.
 - __[react-html-parser](https://github.com/nodeca/babelfish/)__ - developer friendly i18n with plurals support and easy syntax.
 - __[highlight.js](https://github.com/nodeca/babelfish/)__ - developer friendly i18n with plurals support and easy syntax.
 
+## \`how to use\`
+\`\`\` js
+import React from 'react';
+import { render } from 'react-dom';
+import MarkdownForReact from 'markdown-for-react';
 
-## For Example:
+class Example extends React.Component {
+  render() {
+    return (
+      <MarkdownForReact value={"# qweqwe"} />
+    )
+  }
+}
+render(<Example />, document.getElementById('init'));
+\`\`\`
+
+
+## \`For Example\`
 
 # h1 text
 ## h2 text
@@ -70,16 +83,6 @@ Inline \`code\`
     line 2 of code
     line 3 of code
 
-Syntax highlighting
-
-\`\`\` js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-\`\`\`
-
 ## Tables
 
 | Option | Description |
@@ -110,27 +113,37 @@ Like links, Images also have a footnote style syntax
 With a reference later in the document defining the URL location:
 
 [id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-
-- 19^th^
-- H~2~O
-
 `;
 
 
-  return (
-    <div className="markdown-for-react">
-      <h1>markdown-for-react demo</h1>
-      <div className="markdown">
-        {
-          value.split("\n").map((data, index) => <p key={index}>{data}</p>)
-        }
+class Example extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {value}
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value
+    });
+  }
+
+  render() {
+
+    return (
+      <div className="markdown-for-react">
+        <h1>markdown-for-react demo</h1>
+        <div className="markdown">
+          <textarea value={this.state.value} onChange={ this.handleChange }></textarea>
+        </div>
+        <div className="html">
+          <MarkdownForReact value={this.state.value} />
+        </div>
+        <div className="gh-ribbon"><a href="https://github.com/jindada/markdown-for-react.git" target="_blank">Fork me on GitHub</a></div>
       </div>
-      <div className="html">
-        <MarkdownForReact value={value} />
-      </div>
-      <div className="gh-ribbon"><a href="https://github.com/jindada/markdown-for-react.git" target="_blank">Fork me on GitHub</a></div>
-    </div>
-  );
+    );
+  }
 };
 
 render(<Example />, document.getElementById('init'));
