@@ -115,4 +115,4 @@ _italic text_
 
 ## Contributing
 
-You can submit any ideas as [pull requests](https://github.com/jindada/markdown-for-react) or as a [GitLab issue](https://github.com/jindada/markdown-for-react/issues).
+You can submit any ideas as [pull requests](https://github.com/jindada/markdown-for-react) or as a [Github issue](https://github.com/jindada/markdown-for-react/issues).
